@@ -7,7 +7,7 @@ class Solution {
         if(map.containsValue(1)) return -1;
         int answer=0;
         for(int level : map.values()){
-         //   if(level==1) return -1;
+           if(level==1) return -1;
             if(level%3==0){
                 answer+=level/3;
             }
@@ -15,6 +15,6 @@ class Solution {
                 answer+=level/3+1;
             }
         }
-        return answer==0? -1:answer;
+        return answer;
     }
 }
