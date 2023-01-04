@@ -4,7 +4,6 @@ class Solution {
         for( int num : tasks){
             map.put(num,map.getOrDefault(num,0)+1);
         }
-        if(map.containsValue(1)) return -1;
         int answer=0;
         for(int level : map.values()){
            if(level==1) return -1;
