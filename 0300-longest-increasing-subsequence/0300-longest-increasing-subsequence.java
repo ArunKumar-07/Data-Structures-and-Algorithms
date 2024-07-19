@@ -11,10 +11,11 @@ class Solution {
                 }
             }
         }
-        int ans =0;
-        for(int it : dp){
-            if(ans < it) ans=it;
-        }
-    return ans;
+       int max = Arrays.stream(dp).max().orElse(0);
+        // int ans =0;
+        // for(int it : dp){
+        //     if(ans < it) ans=it;
+        // }
+         return max;
     }
 }
