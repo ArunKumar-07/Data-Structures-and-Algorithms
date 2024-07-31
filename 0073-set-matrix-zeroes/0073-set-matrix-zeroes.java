@@ -1,33 +1,38 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        boolean frow=false,fcol=false;
-        int m=matrix.length;
-        int n=matrix[0].length;
-        for(int i=0;i<m;i++){
-            for( int j=0;j<n;j++){
-                if(matrix[i][j]==0){
-                    if(i==0) frow=true;
-                    if(j==0)fcol=true;
-                    matrix[i][0]=0;
-                    matrix[0][j]=0;
-                }
+       Stack<int[]> st = new Stack<>();
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j] == 0) st.push(new int[]{i,j});
             }
         }
-        for(int i=1;i<m;i++){
-            for(int j=1;j<n;j++){
-                if(matrix[0][j]==0 || matrix[i][0]==0) matrix[i][j]=0;
-            }
+        while(!st.isEmpty()){
+            int[] curr = st.pop();
+        //logic
+            findUp(curr[0],curr[1],matrix);
+             findDown(curr[0],curr[1],matrix);
+             findRight(curr[0],curr[1],matrix);
+             findLeft(curr[0],curr[1],matrix);
         }
-        if(frow){
-            for(int j=0;j<n;j++){
-                matrix[0][j]=0;
-            }
-        }
-        if(fcol){
-            for(int i=0;i<m;i++){
-                matrix[i][0]=0;
-            }
-        }
-        
+    }
+    void findUp(int i,int j, int[][] matrix){
+        if(i < 0) return;
+        matrix[i][j]=0;
+        findUp(i-1,j,matrix);
+    }
+     void findDown(int i,int j, int[][] matrix){
+        if( matrix[0].length <= j ) return;
+        matrix[i][j]=0;
+        findDown(i,j+1,matrix);
+    }
+     void findRight(int i,int j, int[][] matrix){
+        if(  matrix.length  <= i) return;
+        matrix[i][j]=0;
+        findRight(i+1,j,matrix);
+    }
+     void findLeft(int i,int j, int[][] matrix){
+        if(j < 0) return;
+        matrix[i][j]=0;
+        findLeft(i,j-1,matrix);
     }
 }
