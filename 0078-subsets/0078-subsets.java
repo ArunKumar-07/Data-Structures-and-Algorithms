@@ -1,16 +1,16 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> outer = new ArrayList<>();
-       // Arrays.sort(nums);
-        find(nums,new ArrayList<>(),outer ,0);
+        Arrays.sort(nums);
+        find(nums,outer,new ArrayList<>(),0);
         return outer;
     }
-   void find(int[] nums,ArrayList<Integer> tempList,List<List<Integer>> outer ,int start){
-        outer.add(new ArrayList<>(tempList));
-        for(int i=start;i<nums.length;i++){
-            tempList.add(nums[i]);
-            find(nums,tempList,outer,i+1);
-            tempList.remove(tempList.size()-1);
-        }
+void find(int[] nums,List<List<Integer>> outer,List<Integer> list , int start){
+    outer.add(new ArrayList<>(list));
+    for(int i=start;i<nums.length;i++){
+        list.add(nums[i]);
+        find(nums,outer,list,i+1);
+        list.remove(list.size()-1);
     }
+}
 }
