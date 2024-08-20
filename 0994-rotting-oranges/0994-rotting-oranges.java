@@ -29,8 +29,8 @@ class Solution {
                     qu.add(new int[]{x,y});
                 }
             }
-           if(qu.size()!=0) minute++;
+            minute++;
         }        
-    return fresh ==0 ? minute : -1; 
+    return fresh ==0 ? minute-1 : -1; 
     }
 }
