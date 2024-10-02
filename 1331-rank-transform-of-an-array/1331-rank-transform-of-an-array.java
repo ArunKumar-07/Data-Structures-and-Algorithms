@@ -1,13 +1,14 @@
 class Solution {
     public int[] arrayRankTransform(int[] arr) {
         int n = arr.length;
-       int[] dup =  Arrays.copyOf(arr,n);
-        Arrays.sort(dup);
+        TreeSet<Integer> set = new TreeSet<>();
         HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<n;i++){
+            set.add(arr[i]);
+        }
         int pp = 1;
-        for(int i=0;i<  dup.length;i++){
-            if(map.containsKey(dup[i])) continue;
-           map.put(dup[i],pp++);
+        for(int num :set ){
+           map.put(num,pp++);
         }
         int[] ans = new int[n];
         for(int i=0;i<n;i++){
